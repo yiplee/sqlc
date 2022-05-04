@@ -1,0 +1,11 @@
+{
+    "version": "1",
+    "packages": [
+        {
+            "path": "example",
+            "engine": "postgresql",
+            "schema": "example/query.sql",
+            "queries": "example/query.sql"
+        }
+    ]
+}
