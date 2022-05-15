@@ -3,45 +3,32 @@ package sqlc
 import (
 	"context"
 	"database/sql"
+
+	"github.com/yiplee/nap"
 )
 
-type DBTX interface {
-	ExecContext(context.Context, string, ...interface{}) (sql.Result, error)
-	PrepareContext(context.Context, string) (*sql.Stmt, error)
-	QueryContext(context.Context, string, ...interface{}) (*sql.Rows, error)
-	QueryRowContext(context.Context, string, ...interface{}) *sql.Row
+var _ DBTX = (*DB)(nil)
+
+type DB struct {
+	*nap.DB
 }
 
-var _ DBTX = (*wrappedDB)(nil)
-
-func Wrap(db DBTX) DBTX {
-	return &wrappedDB{db}
-}
-
-type wrappedDB struct {
-	DBTX
-}
-
-func (w wrappedDB) ExecContext(ctx context.Context, query string, args ...interface{}) (sql.Result, error) {
-	if b, ok := BuilderFrom(ctx); ok {
-		query, args = b.Build(query, args...)
+func Connect(driverName, master string, slaves ...string) (*DB, error) {
+	db, err := nap.Open(driverName, master, slaves...)
+	if err != nil {
+		return nil, err
 	}
 
-	return w.DBTX.ExecContext(ctx, query, args...)
-}
-
-func (w wrappedDB) QueryContext(ctx context.Context, query string, args ...interface{}) (*sql.Rows, error) {
-	if b, ok := BuilderFrom(ctx); ok {
-		query, args = b.Build(query, args...)
+	if err := db.Ping(); err != nil {
+		return nil, err
 	}
 
-	return w.DBTX.QueryContext(ctx, query, args...)
+	return &DB{db}, nil
 }
 
-func (w wrappedDB) QueryRowContext(ctx context.Context, query string, args ...interface{}) *sql.Row {
-	if b, ok := BuilderFrom(ctx); ok {
-		query, args = b.Build(query, args...)
-	}
-
-	return w.DBTX.QueryRowContext(ctx, query, args...)
+// PrepareContext creates a prepared statement for later queries or executions.
+//
+// Read or update can not be determined by the query string currently, use master database.
+func (db *DB) PrepareContext(ctx context.Context, query string) (*sql.Stmt, error) {
+	return db.Master().PrepareContext(ctx, query)
 }

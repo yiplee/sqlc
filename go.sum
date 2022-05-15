@@ -1,0 +1,6 @@
+github.com/mattn/go-sqlite3 v1.14.13 h1:1tj15ngiFfcZzii7yd82foL+ks+ouQcj8j/TPq3fk1I=
+github.com/mattn/go-sqlite3 v1.14.13/go.mod h1:NyWgC/yNuGj7Q9rpYnZvas74GogHl5/Z4A/KQRfk6bU=
+github.com/yiplee/nap v1.0.1 h1:5p8KAIkYy+PIMGSk+ScF13Hh/OFkIEBHPuD14OFvStg=
+github.com/yiplee/nap v1.0.1/go.mod h1:7Zvro/en8ARhkqgv3vpj037yJSBRvGeNyj5Np5XUFgc=
+golang.org/x/sync v0.0.0-20220513210516-0976fa681c29 h1:w8s32wxx3sY+OjLlv9qltkLU5yvJzxjjgiHWLjdIcw4=
+golang.org/x/sync v0.0.0-20220513210516-0976fa681c29/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=

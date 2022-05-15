@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/go,macos,intellij,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=go,macos,intellij,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/go,macos,goland,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=go,macos,goland,visualstudiocode
 
 ### Go ###
 # If you prefer the allow list template instead of the deny list, see community template:
@@ -29,7 +29,7 @@ go.work
 /vendor/
 /Godeps/
 
-### Intellij ###
+### GoLand ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -108,7 +108,7 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### Intellij Patch ###
+### GoLand Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 # *.iml
@@ -195,4 +195,4 @@ Temporary Items
 # Ignore code-workspaces
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/go,macos,intellij,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/go,macos,goland,visualstudiocode
