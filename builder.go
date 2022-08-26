@@ -1,6 +1,7 @@
 package sqlc
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -35,6 +36,18 @@ func (b *Builder) Where(query string, args ...interface{}) *Builder {
 	})
 
 	return b
+}
+
+// In is an equivalent of Where("column IN (?,?,?)", args...).
+// In("id", 1, 2, 3)
+func (b *Builder) In(column string, args ...interface{}) *Builder {
+	placeholders := make([]string, len(args))
+	for i := range args {
+		placeholders[i] = "?"
+	}
+
+	query := fmt.Sprintf("%s IN (%s)", column, strings.Join(placeholders, ","))
+	return b.Where(query, args...)
 }
 
 // Order sets columns of ORDER BY in SELECT.

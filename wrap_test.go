@@ -22,6 +22,7 @@ func Example_build() {
 	authors, err := query.ListAuthors(sqlc.Build(ctx, func(b *sqlc.Builder) {
 		b.Where("age > $1", 10)
 		b.Where("name = $2", "foo")
+		b.In("id", 1, 2, 3)
 		b.Order("age,name DESC")
 		b.Limit(10)
 	}))
