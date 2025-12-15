@@ -1,3 +1,5 @@
+> New solution: https://github.com/yiplee/sqlc-dynamic-query-example
+
 # sqlc: A simple dynamic query builder for [kyleconroy/sqlc](https://github.com/kyleconroy/sqlc)
 
 ## How to use
